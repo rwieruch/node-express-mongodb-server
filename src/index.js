@@ -56,7 +56,7 @@ app.get('/messages/:messageId', async (req, res) => {
 app.post('/messages', async (req, res) => {
   const message = await req.models.Message.create({
     text: req.body.text,
-    userId: req.me.id,
+    user: req.me.id,
   });
 
   return res.send(message);
@@ -98,17 +98,17 @@ const createUsersWithMessages = () => {
 
   const message1 = new models.Message({
     text: 'Published the Road to learn React',
-    userId: user1.id,
+    user: user1.id,
   });
 
   const message2 = new models.Message({
     text: 'Happy to release ...',
-    userId: user2.id,
+    user: user2.id,
   });
 
   const message3 = new models.Message({
     text: 'Published a complete ...',
-    userId: user2.id,
+    user: user2.id,
   });
 
   message1.save();
