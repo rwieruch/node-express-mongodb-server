@@ -9,6 +9,7 @@ An easy way to get started with a Express server with MongoDB with Node.js.
 * Babel 7
 * Environment Variables
 * Express
+* REST API
 * MongoDB
 
 ## Requirements
@@ -23,6 +24,7 @@ An easy way to get started with a Express server with MongoDB with Node.js.
 * `npm install`
 * [start MongoDB](https://www.robinwieruch.de/mongodb-express-setup-tutorial/)
 * `npm start`
+* optional: include *.env* in your *.gitignore*
 
 ### GET Routes
 
