@@ -1,11 +1,8 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema(
-  {
-    username: String,
-  },
-  { collection: 'User' },
-);
+const userSchema = new mongoose.Schema({
+  username: String,
+});
 
 userSchema.statics.findByLogin = async (login) => {
   let user = await this.findOne({
