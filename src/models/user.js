@@ -1,10 +1,13 @@
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
-  username: String,
+  username: {
+    type: String,
+    unique: true,
+  },
 });
 
-userSchema.statics.findByLogin = async (login) => {
+userSchema.statics.findByLogin = async login => {
   let user = await this.findOne({
     username: login,
   });
