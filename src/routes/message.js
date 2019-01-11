@@ -24,9 +24,14 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:messageId', async (req, res) => {
-  const result = await req.context.models.Message.findOneAndDelete(
+  const message = await req.context.models.Message.findById(
     req.params.messageId,
   );
+
+  let result = null;
+  if (message) {
+    result = await message.remove();
+  }
 
   return res.send(result);
 });
