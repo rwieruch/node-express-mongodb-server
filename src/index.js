@@ -48,7 +48,7 @@ connectDb().then(async () => {
   );
 });
 
-const createUsersWithMessages = () => {
+const createUsersWithMessages = async () => {
   const user1 = new models.User({
     username: 'rwieruch',
   });
@@ -72,10 +72,10 @@ const createUsersWithMessages = () => {
     user: user2.id,
   });
 
-  message1.save();
-  message2.save();
-  message3.save();
+  await message1.save();
+  await message2.save();
+  await message3.save();
 
-  user1.save();
-  user2.save();
+  await user1.save();
+  await user2.save();
 };
