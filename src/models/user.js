@@ -1,13 +1,17 @@
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    unique: true,
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+    },
   },
-});
+  { timestamps: true },
+);
 
-userSchema.statics.findByLogin = async function(login) {
+userSchema.statics.findByLogin = async function (login) {
   let user = await this.findOne({
     username: login,
   });
@@ -19,7 +23,7 @@ userSchema.statics.findByLogin = async function(login) {
   return user;
 };
 
-userSchema.pre('remove', function(next) {
+userSchema.pre('remove', function (next) {
   this.model('Message').deleteMany({ user: this._id }, next);
 });
 

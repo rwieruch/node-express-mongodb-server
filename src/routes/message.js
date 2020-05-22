@@ -28,12 +28,11 @@ router.delete('/:messageId', async (req, res) => {
     req.params.messageId,
   );
 
-  let result = null;
   if (message) {
-    result = await message.remove();
+    await message.remove();
   }
 
-  return res.send(result);
+  return res.send(message);
 });
 
 export default router;

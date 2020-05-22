@@ -34,6 +34,14 @@ app.use('/session', routes.session);
 app.use('/users', routes.user);
 app.use('/messages', routes.message);
 
+app.use(async (req, res, next) => {
+  req.context = {
+    models,
+    me: await models.User.findByLogin('rwieruch'),
+  };
+  next();
+});
+
 // * Start * //
 
 const eraseDatabaseOnSync = true;
